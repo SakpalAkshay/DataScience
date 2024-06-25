@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from sklearn.model_selection import train_test_split
 df = pd.read_csv('placement.csv')
 
 class MyLinearRegression:
@@ -28,3 +28,24 @@ class MyLinearRegression:
         print(X_test)
         # y = mx + b
         return self.slope * X_test + self.intercept
+
+
+#train test split and prediction
+X = df.iloc[:,0].values
+y = df.iloc[:,-1].values
+
+#splitting data
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=2)
+lr = MyLinearRegression()
+lr.fit(X_train,y_train)
+
+# slope = 0.5579519734250721
+# intercept -0.8961119222429152
+
+print(lr.predict(X_test[0]))
+
+#8.58
+#3.891116009744203
+
+
+#Compare this o/p with our LR model using Sklearn in other file both are same
