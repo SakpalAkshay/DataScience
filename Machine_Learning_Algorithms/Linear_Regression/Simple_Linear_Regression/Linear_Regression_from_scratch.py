@@ -1,3 +1,8 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('placement.csv')
+
 class MyLinearRegression:
     def __init__(self):
         self.slope = None
